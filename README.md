@@ -1,5 +1,8 @@
 # ESP8266
 
+# thanks for https://cordobo.com/2300-flash-esp8266-01-with-arduino-uno/
+# alot of this documentation comes from there.
+
 # Documentation on how to flash and program an ESP820 WiFi module.
 
         ### ESP8266 PINOUT ###
@@ -99,4 +102,58 @@ drwxr-xr-x 5 pi   pi   4,0K nov 27 18:06 ..
 
 
 flash_original.bin is the backup save it somewhere in case but if you made it here you should be ok for erase and write.
+
+# ERASE THE MODULE
+
+sudo python3 /home/pi/.local/bin/esptool.py --port /dev/ttyS0 erase_flash
+
+
+pi@raspberrypi:~ $ sudo python3 /home/pi/.local/bin/esptool.py --port /dev/ttyS0 erase_flash
+esptool.py v3.0
+Serial port /dev/ttyS0
+Connecting........_____....._____....._____....._____....._
+Detecting chip type... ESP8266
+Chip is ESP8266EX
+Features: WiFi
+Crystal is 26MHz
+MAC: 84:cc:a8:84:3d:df
+Uploading stub...
+Running stub...
+Stub running...
+Erasing flash (this may take a while)...
+Chip erase completed successfully in 3.3s
+Hard resetting via RTS pin...
+
+
+# WRITE THE NEW FIRWARE
+
+sudo python3 /home/pi/.local/bin/esptool.py --port /dev/ttyS0 --baud 115200 write_flash --flash_size=detect 0 micropy.bin --verify
+
+
+esptool.py v3.0
+Serial port /dev/ttyS0
+Connecting........____
+Detecting chip type... ESP8266
+Chip is ESP8266EX
+Features: WiFi
+Crystal is 26MHz
+MAC: 84:cc:a8:84:3d:df
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Auto-detected Flash size: 4MB
+Flash params set to 0x0040
+Compressed 619828 bytes to 404070...
+Wrote 619828 bytes (404070 compressed) at 0x00000000 in 39.8 seconds (effective 124.6 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Verifying just-written flash...
+(This option is deprecated, flash contents are now always read back after flashing.)
+Flash params set to 0x0040
+Verifying 0x97534 (619828) bytes @ 0x00000000 in flash against micropy.bin...
+-- verify OK (digest matched)
+Hard resetting via RTS pin...
+
 
