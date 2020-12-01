@@ -1,9 +1,8 @@
 # ESP8266
-
-# thanks for https://cordobo.com/2300-flash-esp8266-01-with-arduino-uno/
-# alot of this documentation comes from there.
-
 # Documentation on how to flash and program an ESP820 WiFi module.
+
+thanks for https://cordobo.com/2300-flash-esp8266-01-with-arduino-uno/
+alot of this documentation comes from there.
 
         ### ESP8266 PINOUT ###
 
@@ -42,8 +41,8 @@ You might need to point the java version to jre to actually be able to start ard
 
 # Test the MODULE
 
-- Open arduino and select the com port used by rpi.
-- Click on monitor COM port
+ Open arduino and select the com port used by rpi.
+ Click on monitor COM port
 
 type in the command: 'AT' without the single quote and you should get an 'OK' response.
 
